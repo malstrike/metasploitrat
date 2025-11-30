@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaSploit - Advanced Penetration Testing Framework</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg" id="matrix-bg"></div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">MetaSploit</span>
+                <span class="version">v6.3.47</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#console" class="nav-link" data-section="console">Console</a>
+                <a href="#downloads" class="nav-link" data-section="downloads">Downloads</a>
+                <a href="#systems" class="nav-link" data-section="systems">Systems</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+            </nav>
+            <div class="theme-switcher">
+                <button id="theme-btn" class="theme-btn">🎨 Theme</button>
+                <div class="theme-options" id="theme-options">
+                    <div class="theme-option" data-theme="green">Green</div>
+                    <div class="theme-option" data-theme="red">Red</div>
+                    <div class="theme-option" data-theme="blue">Blue</div>
+                    <div class="theme-option" data-theme="purple">Purple</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mouse-trail" id="mouse-trail"></div>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Access Terminal</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p class="register-link">Don't have access? <a href="#" onclick="showRegister()">Register</a></p>
+            </form>
+            <form id="register-form" style="display:none;">
+                <input type="text" id="reg-username" placeholder="Username" required>
+                <input type="email" id="reg-email" placeholder="Email" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <button type="submit">Register</button>
+                <p class="register-link">Already have access? <a href="#" onclick="showLogin()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <main class="main">
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h1 class="hero-title">
+                        <span class="typing-text" id="typing-text">MetaSploit Framework</span>
+                        <span class="cursor">|</span>
+                    </h1>
+                    <p class="hero-subtitle">Advanced Penetration Testing Framework</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">2,847</span>
+                            <span class="stat-label">Exploits</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1,234</span>
+                            <span class="stat-label">Payloads</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">567</span>
+                            <span class="stat-label">Auxiliaries</span>
+                        </div>
+                    </div>
+                    <button class="cta-btn" onclick="showLoginModal()">Access Terminal</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="console" class="section">
+            <div class="container">
+                <div class="console-container">
+                    <div class="console-header">
+                        <div class="console-title">MetaSploit Console (RCON)</div>
+                        <div class="console-controls">
+                            <button class="console-btn" onclick="clearConsole()">Clear</button>
+                            <button class="console-btn" onclick="toggleFullscreen()">Fullscreen</button>
+                        </div>
+                    </div>
+                    <div class="console-output" id="console-output">
+                        <div class="console-line">MetaSploit Framework Console v6.3.47-dev</div>
+                        <div class="console-line">+ -- --=[ 2847 exploits - 1234 auxiliary - 567 post ]</div>
+                        <div class="console-line">+ -- --=[ 1234 payloads - 45 encoders - 11 nops ]</div>
+                        <div class="console-line">+ -- --=[ 9 evasion ]</div>
+                        <div class="console-line"></div>
+                        <div class="console-line">Type 'help' for available commands</div>
+                        <div class="console-line"></div>
+                    </div>
+                    <div class="console-input-container">
+                        <span class="console-prompt">msf6 > </span>
+                        <input type="text" class="console-input" id="console-input" placeholder="Enter command...">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="downloads" class="section">
+            <div class="container">
+                <h2 class="section-title">Downloads & Resources</h2>
+                <div class="downloads-grid">
+                    <div class="download-category">
+                        <h3>Linux Distributions</h3>
+                        <div class="download-links">
+                            <a href="https://kali.org/get-kali/" target="_blank" class="download-link">
+                                <span class="download-icon">🐉</span>
+                                <span class="download-name">Kali Linux</span>
+                                <span class="download-desc">Penetration Testing Distribution</span>
+                            </a>
+                            <a href="https://parrotsec.org/download/" target="_blank" class="download-link">
+                                <span class="download-icon">🦜</span>
+                                <span class="download-name">Parrot Security OS</span>
+                                <span class="download-desc">Security-focused Distribution</span>
+                            </a>
+                            <a href="https://blackarch.org/downloads.html" target="_blank" class="download-link">
+                                <span class="download-icon">⚫</span>
+                                <span class="download-name">BlackArch Linux</span>
+                                <span class="download-desc">Arch-based Penetration Testing</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="download-category">
+                        <h3>Operating Systems</h3>
+                        <div class="download-links">
+                            <a href="https://www.microsoft.com/software-download/windows11" target="_blank" class="download-link">
+                                <span class="download-icon">🪟</span>
+                                <span class="download-name">Windows 11</span>
+                                <span class="download-desc">Latest Windows OS</span>
+                            </a>
+                            <a href="https://ubuntu.com/download" target="_blank" class="download-link">
+                                <span class="download-icon">🟠</span>
+                                <span class="download-name">Ubuntu</span>
+                                <span class="download-desc">Popular Linux Distribution</span>
+                            </a>
+                            <a href="https://www.debian.org/distrib/" target="_blank" class="download-link">
+                                <span class="download-icon">🔴</span>
+                                <span class="download-name">Debian</span>
+                                <span class="download-desc">Stable Linux Distribution</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="download-category">
+                        <h3>Security Tools</h3>
+                        <div class="download-links">
+                            <a href="https://nmap.org/download.html" target="_blank" class="download-link">
+                                <span class="download-icon">🔍</span>
+                                <span class="download-name">Nmap</span>
+                                <span class="download-desc">Network Discovery Tool</span>
+                            </a>
+                            <a href="https://www.wireshark.org/download.html" target="_blank" class="download-link">
+                                <span class="download-icon">🦈</span>
+                                <span class="download-name">Wireshark</span>
+                                <span class="download-desc">Network Protocol Analyzer</span>
+                            </a>
+                            <a href="https://portswigger.net/burp/communitydownload" target="_blank" class="download-link">
+                                <span class="download-icon">🔥</span>
+                                <span class="download-name">Burp Suite</span>
+                                <span class="download-desc">Web Application Security</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="systems" class="section">
+            <div class="container">
+                <h2 class="section-title">System Analysis</h2>
+                <div class="systems-grid">
+                    <div class="system-card">
+                        <div class="system-header">
+                            <h3>🐧 Linux Systems</h3>
+                            <div class="threat-level high">High Potential</div>
+                        </div>
+                        <div class="system-content">
+                            <div class="capabilities">
+                                <h4>Capabilities:</h4>
+                                <ul>
+                                    <li>Shell access via SSH vulnerabilities</li>
+                                    <li>Privilege escalation through kernel exploits</li>
+                                    <li>Network service exploitation</li>
+                                    <li>Container escape techniques</li>
+                                </ul>
+                            </div>
+                            <div class="attack-vectors">
+                                <h4>Attack Vectors:</h4>
+                                <ul>
+                                    <li>Buffer overflow in system services</li>
+                                    <li>Weak file permissions exploitation</li>
+                                    <li>SUID binary abuse</li>
+                                    <li>Cron job manipulation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="system-card">
+                        <div class="system-header">
+                            <h3>🪟 Windows Systems</h3>
+                            <div class="threat-level critical">Critical</div>
+                        </div>
+                        <div class="system-content">
+                            <div class="capabilities">
+                                <h4>Capabilities:</h4>
+                                <ul>
+                                    <li>SMB protocol exploitation</li>
+                                    <li>Active Directory attacks</li>
+                                    <li>PowerShell execution bypass</li>
+                                    <li>Registry manipulation</li>
+                                </ul>
+                            </div>
+                            <div class="attack-vectors">
+                                <h4>Attack Vectors:</h4>
+                                <ul>
+                                    <li>EternalBlue SMB vulnerability</li>
+                                    <li>Kerberoasting attacks</li>
+                                    <li>DLL hijacking techniques</li>
+                                    <li>UAC bypass methods</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="system-card">
+                        <div class="system-header">
+                            <h3>🌐 Web Applications</h3>
+                            <div class="threat-level medium">Medium Risk</div>
+                        </div>
+                        <div class="system-content">
+                            <div class="capabilities">
+                                <h4>Capabilities:</h4>
+                                <ul>
+                                    <li>SQL injection attacks</li>
+                                    <li>Cross-site scripting (XSS)</li>
+                                    <li>CSRF token bypass</li>
+                                    <li>Authentication bypass</li>
+                                </ul>
+                            </div>
+                            <div class="attack-vectors">
+                                <h4>Attack Vectors:</h4>
+                                <ul>
+                                    <li>Input validation flaws</li>
+                                    <li>Session management issues</li>
+                                    <li>File upload vulnerabilities</li>
+                                    <li>API endpoint exploitation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="system-card">
+                        <div class="system-header">
+                            <h3>📱 Mobile Platforms</h3>
+                            <div class="threat-level high">High Potential</div>
+                        </div>
+                        <div class="system-content">
+                            <div class="capabilities">
+                                <h4>Capabilities:</h4>
+                                <ul>
+                                    <li>APK reverse engineering</li>
+                                    <li>Runtime application analysis</li>
+                                    <li>Certificate pinning bypass</li>
+                                    <li>Root/jailbreak detection bypass</li>
+                                </ul>
+                            </div>
+                            <div class="attack-vectors">
+                                <h4>Attack Vectors:</h4>
+                                <ul>
+                                    <li>Insecure data storage</li>
+                                    <li>Weak cryptographic implementation</li>
+                                    <li>Inter-app communication flaws</li>
+                                    <li>WebView vulnerabilities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About MetaSploit</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>MetaSploit is the world's most used penetration testing framework. It provides information about security vulnerabilities and aids in penetration testing and IDS signature development.</p>
+                        <p>This framework has been developed by a team of elite security researchers and ethical hackers dedicated to advancing cybersecurity knowledge and defensive capabilities.</p>
+                    </div>
+                    <div class="creators">
+                        <h3>Development Team</h3>
+                        <div class="creator-list">
+                            <div class="creator">
+                                <span class="creator-icon">👤</span>
+                                <span class="creator-name">ShadowHall</span>
+                                <span class="creator-role">Lead Developer</span>
+                            </div>
+                            <div class="creator">
+                                <span class="creator-icon">👤</span>
+                                <span class="creator-name">Malstrike</span>
+                                <span class="creator-role">Security Researcher</span>
+                            </div>
+                            <div class="creator">
+                                <span class="creator-icon">👤</span>
+                                <span class="creator-name">CyberPhantom</span>
+                                <span class="creator-role">Exploit Developer</span>
+                            </div>
+                            <div class="creator">
+                                <span class="creator-icon">👤</span>
+                                <span class="creator-name">NullByte</span>
+                                <span class="creator-role">Framework Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MetaSploit Framework. Developed by ShadowHall, Malstrike & Team.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
